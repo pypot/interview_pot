@@ -36,6 +36,9 @@ class NodeStack(object):
     def push(self, e):
         self.data.append(e)
         
+    def depth(self):
+        return len(self.data)
+        
     def empty(self):
         return not self.data
     
@@ -58,6 +61,9 @@ class NodeQueue(object):
     def empty(self):
         return not self.data
     
+    def length(self):
+        return len(self.data)
+    
     def __nonzero__(self):
         return bool(self.data)
     
@@ -71,11 +77,17 @@ def MakeSampleBinTree():
           3   4   5   6
              / \       \
             7   8       9
+           /
+          10
+            \
+            11
     '''
-    tree = [BinTreeNode() for i in range(10)]
+    tree = [BinTreeNode() for i in range(12)]
+    tree[11].evaluate(None, None, 11)
+    tree[10].evaluate(None, tree[11], 10)
     tree[9].evaluate(None, None, 9)
     tree[8].evaluate(None, None, 8)
-    tree[7].evaluate(None, None, 7)
+    tree[7].evaluate(tree[10], None, 7)
     tree[6].evaluate(None, tree[9], 6)
     tree[5].evaluate(None, None, 5)
     tree[4].evaluate(tree[7], tree[8], 4)
