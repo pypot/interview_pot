@@ -1,9 +1,8 @@
 #_*_ coding: utf-8 _*_
+
 """
 二叉树结构定义
 """
-
-
 class BinTreeNode(object):
     '''树的结构体
     '''
